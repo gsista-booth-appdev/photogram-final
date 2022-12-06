@@ -27,8 +27,10 @@
           All public photos
         </a>
       </li>
+          
+      <% if session.fetch(:user_id) == nil %>
+       <li>
 
-        <li>
           <a href="/user_sign_in">
             Sign in
           </a>
@@ -39,11 +41,34 @@
             Sign up
           </a>
         </li>
+        
+        <% else %>
+
+        <li>
+          <a href="/edit_user_profile">
+            <%= :user_id %>
+          </a>
+        </li>
+
+        <li>
+          <a href="/user_sign_out">
+            Sign out
+          </a>
+        </li>
+      <% end %>
     </ul>
 
+<% if notice.present? %>
+  <div style="border: thin green solid; color: green">
+    <%= notice %>
+  </div>
+<% end %>
 
-
-    <h1>List of users</h1>
+<% if alert.present? %>
+  <div style="border: thin red solid; color: red ">
+    <%= alert %>
+  </div>
+<% end %>
 
     <%= yield %>
   </body>
