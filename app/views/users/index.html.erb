@@ -37,7 +37,8 @@
     </td>
 
     <td>
-      <a href="/users/<%= user.username %>">Show details</a>
+      <a <% if session.fetch(:user_id) == nil %> href="/user_sign_in">Show details</a> <% end %>
+      <a <% if session.fetch(:user_id) != nil %> href="/users/<%= user.username %>">Show details</a> <% end %>
     </td>
   </tr>
   

@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :email, :presence => true
   has_secure_password
 
-  #diredct associations
+  #direct associations
   has_many(:likes, { :class_name => "Like", :foreign_key => "fan_id", :dependent => :destroy })
   has_many(:comments, { :class_name => "Comment", :foreign_key => "author_id", :dependent => :destroy })
   has_many(:sent_follow_requests, { :class_name => "FollowRequest", :foreign_key => "sender_id", :dependent => :destroy })
