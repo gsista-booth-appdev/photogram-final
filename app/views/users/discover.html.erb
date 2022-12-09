@@ -1,34 +1,15 @@
+
 <h1><%= @the_user.username %></h1>
+
 <dl>
   <dt>Private</dt>
-  <dd>false</dd>
+  <dd><%= @the_user.private %></dd>
 
   <dt>Followers</dt>
-  <dd>
-    <%= @the_user.received_follow_requests_count %>
-    </div>
-      <h4>Pending follow requests</h4>
-      <ul>
-
-      </ul>
-  </dd>
+  <dd><%= @the_user.received_follow_requests_count %></dd>
 
   <dt>Following</dt>
   <dd><%= @the_user.sent_follow_requests_count %></dd>
-
-  <dt>Edit user</dt>
-  <dd>
-    <form action="/modify_user/<%= @the_user.username %>" method="post">
-      <label for="browser_username">Username</label>
-      <input id="browser_username" type="text" name="query_username" placeholder="Enter a username..."
-        value="abc">
-
-      <label for="browser_private">Private?</label>
-      <input id="browser_private" type="checkbox" name="query_private" >
-      <button>Update user</button>
-
-    </form>
-  </dd>
 </dl>
 
 <nav>
@@ -48,7 +29,7 @@
   </ul>
 </nav>
 
-<h2>Own photos (<%= @the_user.own_photos_count %>) </h2>
+<h2>Discover (1)</h2>
 
 <table border="1">
   <tr>
@@ -75,7 +56,7 @@
     <th></th>
   </tr>
 
- <% @the_user.own_photos.each do |user| %>
+ <% @the_user.feed.each do |user| %>
   <tr>
     <td>
       <img src="<%= user.image %>">

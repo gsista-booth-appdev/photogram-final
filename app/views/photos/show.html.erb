@@ -102,6 +102,22 @@
     <th>Posted</th>
   </tr>
 
+ <% @the_photo.comments.each do |photo_comments| %>
+  <tr>
+    <td>
+        <%= photo_comments.commenter.username %>
+    </td>
+
+    <td>
+        <%= photo_comments.body %>
+    </td>
+
+    <td>
+        <%= time_ago_in_words(photo_comments.updated_at) %>
+    </td>
+  </tr>
+<% end %>
+
 </table>
 
 <h3>Add a new comment</h3>
